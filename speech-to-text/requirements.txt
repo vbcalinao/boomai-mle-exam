@@ -1,0 +1,2 @@
+assemblyai==0.20.2
+pyaudio==0.2.14

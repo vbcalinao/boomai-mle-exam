@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question Input</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            fetch('http://localhost:8000/get_answer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    questions: [document.getElementById('questions').value]
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="submitForm(event)">
+        <label for="questions">Questions:</label><br>
+        <input type="text" id="questions" name="questions"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
